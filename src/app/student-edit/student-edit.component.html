@@ -1,0 +1,99 @@
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a href="students" class="nav-link" routerLinkActive="active">Student List</a>
+        </li>
+        <li class="nav-item">
+            <a href="create" class="nav-link" routerLinkActive="active">Add Student</a>
+  
+        </li>
+    </ul>
+  
+  </nav>
+  <form [formGroup]="studentform" (ngSubmit)="updateStudents()">
+    <input type="hidden" #studentid [(ngModel)]="student.stu_id" formControlName="stu_id">
+    <div class="form-group">
+        <label for="stu_name">Student Name </label>
+        <input #studentname [(ngModel)]="student.stu_name" type="text " formControlName="stu_name" class="form-control">
+  
+    </div>
+    <div *ngIf="studentform.controls['stu_name'].invalid && (studentform.controls['stu_name'].dirty || studentform.controls['stu_name'].touched)" class="alert alert-danger">
+        <div *ngIf="studentform.controls['stu_name'].errors.required">
+          Student Name is required.
+        </div> 
+        </div>
+
+
+    <div class="form-group">
+        <label for="stu_age">Student Age </label>
+      <input #studentage [(ngModel)]="student.stu_age" type="text " formControlName="stu_age" class="form-control">
+  </div>
+       <div *ngIf="studentform.controls['stu_age'].invalid && (studentform.controls['stu_age'].dirty || studentform.controls['stu_age'].touched)" class="alert alert-danger">
+            <div *ngIf="studentform.controls['stu_age'].errors.required">
+             Student Age is required.
+          </div> 
+      </div>
+
+
+      <div class="form-group">
+        <label for="stu_gender">Student Gender</label>
+        <select
+          class="form-control"
+          formControlName="stu_gender"
+          [(ngModel)]="student.stu_gender"
+        >
+          <option value="">Select Student Gender</option>
+          <option value="Female">Female</option>
+          <option value="Male">Male</option>
+        </select>
+    
+    </div>
+
+
+
+    <div class="form-group">
+        <label for="stu_phno">Student PhoneNumber </label>
+      <input #studentPhoneNumber [(ngModel)]="student.stu_phno" type="text " formControlName="stu_phno" class="form-control">
+  </div>
+       <div *ngIf="studentform.controls['stu_phno'].invalid && (studentform.controls['stu_phno'].dirty || studentform.controls['stu_phno'].touched)" class="alert alert-danger">
+            <div *ngIf="studentform.controls['stu_phno'].errors.required">
+             Student PhoneNumber is required.
+          </div> 
+      </div>
+
+
+      <div class="form-group">
+        <label for="stu_dept">Student Department</label>
+        <select
+          class="form-control"
+          formControlName="stu_dept"
+          [(ngModel)]="student.stu_dept"
+        >
+          <option value="">Select Student Department</option>
+          <option value="EC">Electronics and Communication</option>
+          <option value="EE">Electrical and Electronics</option>
+          <option value="CS">Computer Science</option>
+          <option value="CE">Civil</option>
+          <option value="Mech">Mechanical</option>
+        </select>
+    
+    </div>
+
+    
+        <div class="form-group">
+            <label for="stu_address">Student Address </label>
+            <input #studentaddress [(ngModel)]="student.stu_address" type="text " formControlName="stu_address" class="form-control">
+      
+        </div>
+        <div *ngIf="studentform.controls['stu_address'].invalid && (studentform.controls['stu_address'].dirty || studentform.controls['stu_address'].touched)" class="alert alert-danger">
+            <div *ngIf="studentform.controls['stu_address'].errors.required">
+              Student Address is required.
+            </div> 
+            </div>
+
+
+    <button type="submit" class="btn btn-primary" [disabled]="studentform.pristine || studentform.invalid"> Submit </button>
+  </form>
+  
+  

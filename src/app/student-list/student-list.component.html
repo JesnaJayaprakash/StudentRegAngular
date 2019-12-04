@@ -1,0 +1,66 @@
+
+<div style="text-align: center"><b>WELCOME {{uname}}</b>
+</div>
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+    <!-- Links -->
+    
+    <ul class="navbar-nav">
+      <li class="nav-item">
+          <!--a routerLink="employees" class="nav-link" routerLinkActive="active">Employee List</a-->
+          <a href="create" class="nav-link" routerLinkActive="active"> Student Add</a>
+      </li>
+      
+    </ul>
+  </nav>
+  <input type="text" placeholder="Enter StudentName" [(ngModel)]="searchStudent" (ngModelChange)="search(searchStudent)" class="form-control" style="width:500px;">
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2>Student List</h2>
+    </div>
+
+    
+
+
+    <div class="panel-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>StudentId</th>
+                    <th>StudentName</th>
+                    <th>StudentAge</th>
+                    <th>StudentGender</th>
+                    <th>StudentPhoneNumber</th>
+                    <th>StudentDepartment</th>
+                    <th>StudentAddress</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let student of students | async | paginate:{itemsPerPage:3,currentPage:p};let i=index">
+                    <td>{{student.stu_id}}</td>
+                    <td>{{student.stu_name}}</td>
+                    <td>{{student.stu_age}}</td>
+                    <td>{{student.stu_gender}}</td>
+                    <td>{{student.stu_phno}}</td>
+                    <td>{{student.stu_dept}}</td>
+                    <td>{{student.stu_address}}</td>
+                   
+                    <td><button [routerLink]="['/edit',student.stu_id]" class="btn btn-info" style="margin-left: 10px">Edit</button>
+                        <button (click)="deleteStudent(student.stu_id)" class="btn btn-danger">Delete</button>
+                        
+                        
+                        
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+  
+
+
+    
+</div>
+<pagination-controls (pageChange)="p=$event">
+
