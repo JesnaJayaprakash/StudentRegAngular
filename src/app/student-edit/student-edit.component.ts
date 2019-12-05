@@ -20,7 +20,6 @@ export class StudentEditComponent implements OnInit {
 
   constructor(private service: StudentService, private route: ActivatedRoute, private formBuilder:FormBuilder, private toastr:ToastrService) { }
   id:number;
-  pdt: any;
   ngOnInit() {
     this.id=this.route.snapshot.params["id"];
     this.studentform=this.formBuilder.group({

@@ -12,10 +12,10 @@
   
   </nav>
   <form [formGroup]="studentform" (ngSubmit)="updateStudents()">
-    <input type="hidden" #studentid [(ngModel)]="student.stu_id" formControlName="stu_id">
+    <input type="hidden" #stu_id [(ngModel)]="student.stu_id" formControlName="stu_id">
     <div class="form-group">
         <label for="stu_name">Student Name </label>
-        <input #studentname [(ngModel)]="student.stu_name" type="text " formControlName="stu_name" class="form-control">
+        <input #stu_name [(ngModel)]="student.stu_name" type="text " formControlName="stu_name" class="form-control">
   
     </div>
     <div *ngIf="studentform.controls['stu_name'].invalid && (studentform.controls['stu_name'].dirty || studentform.controls['stu_name'].touched)" class="alert alert-danger">
@@ -68,8 +68,7 @@
         <select
           class="form-control"
           formControlName="stu_dept"
-          [(ngModel)]="student.stu_dept"
-        >
+          [(ngModel)]="student.stu_dept">
           <option value="">Select Student Department</option>
           <option value="EC">Electronics and Communication</option>
           <option value="EE">Electrical and Electronics</option>
@@ -77,7 +76,6 @@
           <option value="CE">Civil</option>
           <option value="Mech">Mechanical</option>
         </select>
-    
     </div>
 
     
